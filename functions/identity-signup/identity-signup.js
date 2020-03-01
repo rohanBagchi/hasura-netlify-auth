@@ -26,7 +26,7 @@ exports.handler = async function(event, context) {
     headers: {
       ["x-hasura-admin-secret"]: process.env.HASURA_SECRET
     },
-    body: {
+    body: JSON.stringify({
       query: `
         mutation addUser($id: String, $name: String, $email: String) {
           insert_users(objects: {id: $id, email: $email, name: $name}) {
@@ -35,9 +35,11 @@ exports.handler = async function(event, context) {
         }
       `,
       variables: {
-        id: user.id
+        id: user.id,
+        email: user.email,
+        name: user.user_metadata.full_name,
       }
-    }
+    })
   })
 
   return {
