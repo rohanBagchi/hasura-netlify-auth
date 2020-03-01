@@ -44,5 +44,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/sw-yx/react-netlify-identity-widget.git"
+  },
+  "dependencies": {
+    "axios": "^0.19.2"
   }
 }
